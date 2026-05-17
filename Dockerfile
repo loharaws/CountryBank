@@ -1,7 +1,9 @@
-FROM java:8-jre
-MAINTAINER Nikita Podshivalov <nikitap4.92@gmail.com>
+FROM openjdk:8-jre
 
-ADD ./build/libs/country_bank-1.0.jar /application/
-CMD ["java", "-jar", "/application/country_bank-1.0.jar"]
+LABEL maintainer="Nikita Podshivalov <nikitap4.92@gmail.com>"
+
+COPY build/libs/*.jar app.jar
 
 EXPOSE 8000
+
+ENTRYPOINT ["java","-jar","/app.jar"]
